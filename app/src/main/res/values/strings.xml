@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Info Custom Dialog</string>
+    <string name="title_activity_verify_otp">VerifyOTP</string>
+    <string name="title_activity_home_page">HomePage</string>
+    <string name="title_activity_search_bar">SearchBar</string>
+    <string name="title_activity_dashboard">Dashboard</string>
+    <string name="title_activity_image_slider">ImageSlider</string>
+    <string name="title_activity_top_app_bar">TopAppBar</string>
+    <string name="title_activity_splash_screen">SplashScreen</string>
+    <string name="title_activity_icons">Icons</string>
+    <string name="title_activity_icon_grid">IconGrid</string>
+    <string name="title_activity_cash_payment">CashPayment</string>
+    <string name="title_activity_bottom_nav">BottomNav</string>
+</resources>
