@@ -1,4 +1,4 @@
-package compose.material.theme
+package compose.material.theme.login
 
 
 import androidx.compose.foundation.Image
@@ -22,7 +22,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -31,11 +30,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import compose.material.theme.R
+import compose.material.theme.util.NiaOutlinedButton
 
 @Composable
 fun ResetPage(navController: NavController) {
@@ -52,11 +52,7 @@ fun ResetPage(navController: NavController) {
 
         Box(
             modifier = Modifier
-                /*.background(
-                    color = MaterialTheme.colorScheme.onPrimary,
-                    shape = RoundedCornerShape(25.dp, 5.dp, 25.dp, 5.dp)
-                )*/
-                .align(Alignment.BottomCenter),
+                .padding(top = 100.dp)
         ) {
 
             Image(
@@ -133,16 +129,14 @@ fun ResetPage(navController: NavController) {
                         gradientColors = gradientColor,
                         cornerRadius = cornerRadius,
                         nameButton = "Verify",
-                        roundedCornerShape = RoundedCornerShape(topStart = 30.dp,bottomEnd = 30.dp),
                         navController
                     )
                 }
-//                GradientButtonReset(
-//                    gradientColors = gradientColor,
-//                    cornerRadius = cornerRadius,
-//                    nameButton = "Submit",
-//                    roundedCornerShape = RoundedCornerShape(topStart = 30.dp,bottomEnd = 30.dp)
-//                )
+                Spacer(modifier = Modifier.padding(5.dp))
+
+                NiaOutlinedButton(onClick = {}) {
+                    androidx.compose.material3.Text(text = "Cancel")
+                }
 
                 Spacer(modifier = Modifier.padding(100.dp))
 //                androidx.compose.material3.TextButton(onClick = {
@@ -180,14 +174,12 @@ private fun GradientButtonReset(
     gradientColors: List<Color>,
     cornerRadius: Dp,
     nameButton: String,
-    roundedCornerShape: RoundedCornerShape,
     navController: NavController
 ) {
 
     androidx.compose.material3.Button(
         modifier = Modifier
-            .fillMaxWidth()
-            .padding(start = 32.dp, end = 32.dp),
+            .fillMaxWidth().absolutePadding(10.dp, 0.dp, 10.dp, 0.dp),
         onClick = {
             navController.navigate("verify_page"){
                 popUpTo(navController.graph.startDestinationId)
@@ -207,9 +199,9 @@ private fun GradientButtonReset(
                 .fillMaxWidth()
                 .background(
                     brush = Brush.horizontalGradient(colors = gradientColors),
-                    shape = roundedCornerShape
+//                    shape = roundedCornerShape
                 )
-                .clip(roundedCornerShape)
+//                .clip(roundedCornerShape)
                 /*.background(
                     brush = Brush.linearGradient(colors = gradientColors),
                     shape = RoundedCornerShape(cornerRadius)
@@ -238,7 +230,6 @@ fun ResetEmailID() {
     OutlinedTextField(
         value = text,
         onValueChange = { text = it },
-        shape = RoundedCornerShape(topEnd =12.dp, bottomStart =12.dp),
         label = {
             Text("ID/Passport",
                 color = MaterialTheme.colorScheme.onBackground,

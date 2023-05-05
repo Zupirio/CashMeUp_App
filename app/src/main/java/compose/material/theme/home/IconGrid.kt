@@ -1,5 +1,6 @@
-package compose.material.theme
+package compose.material.theme.home
 
+import android.widget.Toast
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -13,11 +14,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -27,14 +26,22 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight.*
+import androidx.compose.ui.text.font.FontWeight.Companion.W400
+import androidx.compose.ui.text.font.FontWeight.Companion.W500
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import compose.material.theme.R
+import compose.material.theme.Screen
 import compose.material.theme.model.DataItem
+import compose.material.theme.theme.md_theme_dark_onPrimary
+import compose.material.theme.theme.md_theme_light_onPrimary
 
 //import compose.material.theme.ui.theme.AuthenticationAppTheme
 
@@ -66,7 +73,7 @@ fun IconGrid(navController: NavController) {
 @Composable
 fun DevicesGridView(navController : NavController) {
 //    val navController = rememberNavController()
-
+    val context = LocalContext.current
     Column(
         modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -76,8 +83,8 @@ fun DevicesGridView(navController : NavController) {
         ) {
             IconSection(
                 onClick = {
-                    navController.navigate(Screen.CashPayment.route){
-                        popUpTo(navController.graph.startDestinationId)
+                    navController.navigate("cashpayment_page"){
+                        popUpTo("home")
                         launchSingleTop = true
                     }
                 },
@@ -85,7 +92,13 @@ fun DevicesGridView(navController : NavController) {
                 text = "Cash Payment"
             )
             IconSection(
-                onClick = {null},
+                onClick = {
+                            Toast.makeText(
+                                context,
+                                "This feature is not yet implemented in this configuration",
+                                Toast.LENGTH_LONG
+                            ).show()
+                          },
                 image = painterResource(id = R.drawable.ic_debicheck),
                 text = "DebiCheck"
             )
@@ -94,12 +107,24 @@ fun DevicesGridView(navController : NavController) {
             modifier = Modifier.padding(vertical = 16.dp)
         ) {
             IconSection(
-                onClick = {null},
+                onClick = {
+                    Toast.makeText(
+                        context,
+                        "This feature is not yet implemented in this configuration",
+                        Toast.LENGTH_LONG
+                    ).show()
+                },
                 image = painterResource(id = R.drawable.ic_naedo),
                 text = "NAEDO"
             )
             IconSection(
-                onClick = {null},
+                onClick = {
+                    Toast.makeText(
+                        context,
+                        "This feature is not yet implemented in this configuration",
+                        Toast.LENGTH_LONG
+                    ).show()
+                },
                 image = painterResource(id = R.drawable.ic_efticon),
                 text = "EFT Debit Order"
             )
@@ -177,7 +202,10 @@ fun IconSection(
             contentDescription = "icon",
             modifier = Modifier.align(Alignment.CenterHorizontally)
         )
-        Text(text = text, modifier = Modifier.align(Alignment.CenterHorizontally), style = TextStyle(fontSize = 12.sp))
+        Text(text = text,
+            modifier = Modifier
+                .align(Alignment.CenterHorizontally),
+            style = TextStyle(fontSize = 16.sp, fontWeight = W500, color = md_theme_light_onPrimary))
     }
 }
 

@@ -9,7 +9,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import compose.material.theme.ui.theme.Material3ComposeTheme
+import compose.material.theme.home.CarouselCard
+import compose.material.theme.home.CashPayment
+import compose.material.theme.home.DashboardScreen
+import compose.material.theme.login.LoginPage
+import compose.material.theme.login.RegisterPage
+import compose.material.theme.login.ResetPage
+import compose.material.theme.login.VerifyPage
+import compose.material.theme.theme.Material3ComposeTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,6 +25,7 @@ class MainActivity : ComponentActivity() {
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
         setContent {
             Material3ComposeTheme {
+//                CashMeUpNavHost()
                 LoginApplication()
             }
         }
@@ -28,7 +36,7 @@ class MainActivity : ComponentActivity() {
     fun LoginApplication(){
         val navController = rememberNavController()
 
-        NavHost(navController = navController, startDestination = Screen.LoginPage.route, builder = {
+        NavHost(navController = navController, startDestination = "splash_page", builder = {
             composable("splash_page", content = { SplashScreen(navController = navController) })
             composable("login_page", content = { LoginPage(navController = navController) })
             composable("register_page", content = { RegisterPage(navController = navController) })

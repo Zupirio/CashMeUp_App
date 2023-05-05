@@ -51,14 +51,11 @@ fun SplashScreen(navController: NavController) {
             )
         )
 
-        delay(2000L)
+        delay(3000L)
 
-//        navController.navigate(Screen.LoginPage.route) {
-//            popUpTo(Screen.LoginPage.route) { inclusive = true }
-//        }
-        navController.navigate("reset_page"){
-            popUpTo(navController.graph.startDestinationId)
-            launchSingleTop = true
+        navController.navigate("login_page"){
+            popUpTo("login_page")
+            { inclusive = true }
         }
 
     }
@@ -90,15 +87,15 @@ fun SplashScreen(navController: NavController) {
 //                ),
 //            )
 
-            Text(
-                text = "Anytime Anywhere",
-                style = TextStyle(
-                    fontWeight = FontWeight.Normal,
-                    fontFamily = FontFamily(Font(R.font.jost_book)),
-                    fontSize = 14.sp,
-                    color = Color.Black
-                ),
-            )
+//            Text(
+//                text = "Anytime Anywhere",
+//                style = TextStyle(
+//                    fontWeight = FontWeight.Normal,
+//                    fontFamily = FontFamily(Font(R.font.jost_book)),
+//                    fontSize = 14.sp,
+//                    color = Color.Black
+//                ),
+//            )
 
         }
     }

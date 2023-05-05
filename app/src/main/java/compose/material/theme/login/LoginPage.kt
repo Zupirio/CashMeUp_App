@@ -1,4 +1,4 @@
-package compose.material.theme
+package compose.material.theme.login
 
 
 import androidx.compose.foundation.Image
@@ -9,9 +9,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.OutlinedTextField
-import androidx.compose.material.Text
-import androidx.compose.material.TextFieldDefaults
+import androidx.compose.material.*
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -22,23 +20,35 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+import compose.material.theme.R
+import compose.material.theme.Visibility
+import compose.material.theme.VisibilityOff
+
+@Preview
+@Composable
+fun Preview4() {
+    LoginPage(rememberNavController())
+}
 
 @Composable
-fun VerifyPage(navController: NavController) {
-
+fun LoginPage(navController: NavController) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -51,22 +61,10 @@ fun VerifyPage(navController: NavController) {
 
         Box(
             modifier = Modifier
-                /*.background(
-                    color = MaterialTheme.colorScheme.onPrimary,
-                    shape = RoundedCornerShape(25.dp, 5.dp, 25.dp, 5.dp)
-                )*/
-                .align(Alignment.BottomCenter),
+                .padding(top = 100.dp)
         ) {
 
-            Image(
-                painter = painterResource(id = R.drawable.shield_check),
-                contentDescription = null,
-                contentScale = ContentScale.Fit,
-                modifier = Modifier
-                    .height(150.dp)
-                    .fillMaxWidth(),
-
-                )
+            Branding(image = painterResource(id = R.drawable.ecashmeup))
             Column(
                 modifier = Modifier
                     .padding(16.dp)
@@ -78,48 +76,30 @@ fun VerifyPage(navController: NavController) {
             ) {
 
                 //.........................Spacer
-                Spacer(modifier = Modifier.height(40.dp))
+                Spacer(modifier = Modifier.height(50.dp))
 
                 //.........................Text: title
                 androidx.compose.material3.Text(
-                    text = "You will receive an OTP via SMS",
+                    text = "Sign In",
                     textAlign = TextAlign.Center,
                     modifier = Modifier
                         .padding(top = 130.dp)
                         .fillMaxWidth(),
-                    style = MaterialTheme.typography.labelMedium,
+                    style = MaterialTheme.typography.headlineSmall,
                     color = MaterialTheme.colorScheme.onBackground,
                 )
                 Spacer(modifier = Modifier.height(8.dp))
+                SimpleOutlinedTextFieldSample()
 
-
-                verifyOTP()
                 Spacer(modifier = Modifier.padding(3.dp))
+                SimpleOutlinedPasswordTextField()
 
                 val gradientColor = listOf(Color(0xFFFF8C00), Color(0xFFFF8C00))
                 val cornerRadius = 16.dp
 
 
-                Spacer(modifier = Modifier.padding(10.dp))
-                /* Button(
-                     onClick = {},
-                     modifier = Modifier
-                         .fillMaxWidth(0.8f)
-                         .height(50.dp)
-                 ) {
-                     Text(text = "Login", fontSize = 20.sp)
-                 }*/
-                GradientButtonReset(
-                    gradientColors = gradientColor,
-                    cornerRadius = cornerRadius,
-                    nameButton = "Verify",
-                    roundedCornerShape = RoundedCornerShape(topStart = 30.dp,bottomEnd = 30.dp),
-                    navController
-                )
-
                 Spacer(modifier = Modifier.padding(1.dp))
 
-//                resendOTP()
                 androidx.compose.material3.TextButton(onClick = {
 
                     navController.navigate("reset_page"){
@@ -129,18 +109,22 @@ fun VerifyPage(navController: NavController) {
 
                 }) {
                     androidx.compose.material3.Text(
-                        text = "Did not receive the verification OTP? Resend again",
+                        text = "Forgot Password",
                         letterSpacing = 1.sp,
                         style = MaterialTheme.typography.labelLarge,
-                        color = MaterialTheme.colorScheme.onBackground,
+                        color = MaterialTheme.colorScheme.onBackground
                     )
                 }
+                    GradientButton(
+                        gradientColors = gradientColor,
+                        cornerRadius = cornerRadius,
+                        nameButton = "Login",
+                        navController
+                    )
 
-                Spacer(modifier = Modifier.padding(100.dp))
-
+                Spacer(modifier = Modifier.padding(50.dp))
 
             }
-
 
         }
 
@@ -152,21 +136,20 @@ fun VerifyPage(navController: NavController) {
 
 //...........................................................................
 @Composable
-private fun GradientButtonReset(
+private fun GradientButton(
     gradientColors: List<Color>,
     cornerRadius: Dp,
     nameButton: String,
-    roundedCornerShape: RoundedCornerShape,
     navController: NavController
 ) {
 
     androidx.compose.material3.Button(
         modifier = Modifier
-            .fillMaxWidth()
-            .padding(start = 32.dp, end = 32.dp),
+            .fillMaxWidth().absolutePadding(10.dp, 0.dp, 10.dp, 0.dp),
         onClick = {
-            navController.navigate("register_page"){
-                popUpTo(navController.graph.startDestinationId)
+            //your code
+            navController.navigate("dashboard"){
+                popUpTo(navController.graph.startDestinationId) { inclusive = true }
                 launchSingleTop = true
             }
         },
@@ -183,9 +166,13 @@ private fun GradientButtonReset(
                 .fillMaxWidth()
                 .background(
                     brush = Brush.horizontalGradient(colors = gradientColors),
-                    shape = roundedCornerShape
+//                    shape = roundedCornerShape
                 )
-                .clip(roundedCornerShape)
+//                .clip(roundedCornerShape)
+                /*.background(
+                    brush = Brush.linearGradient(colors = gradientColors),
+                    shape = RoundedCornerShape(cornerRadius)
+                )*/
                 .padding(horizontal = 16.dp, vertical = 8.dp),
             contentAlignment = Alignment.Center
         ) {
@@ -198,25 +185,25 @@ private fun GradientButtonReset(
     }
 }
 
-//Resend top
+
+//email id
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
-fun verifyOTP() {
+fun SimpleOutlinedTextFieldSample() {
     val keyboardController = LocalSoftwareKeyboardController.current
     var text by rememberSaveable { mutableStateOf("") }
 
     OutlinedTextField(
         value = text,
         onValueChange = { text = it },
-        shape = RoundedCornerShape(topEnd =12.dp, bottomStart =12.dp),
         label = {
-            Text("Enter OTP",
+            Text("Username",
                 color = MaterialTheme.colorScheme.onBackground,
                 style = MaterialTheme.typography.labelMedium,
             ) },
-        placeholder = { Text(text = "Enter OTP") },
+        placeholder = { Text(text = "Username") },
         keyboardOptions = KeyboardOptions(
-            imeAction = ImeAction.Done,
+            imeAction = ImeAction.Next,
             keyboardType = KeyboardType.Email
         ),
         colors = TextFieldDefaults.outlinedTextFieldColors(
@@ -234,31 +221,40 @@ fun verifyOTP() {
     )
 }
 
-//Resend top
+//password
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
-fun resendOTP() {
+fun SimpleOutlinedPasswordTextField() {
     val keyboardController = LocalSoftwareKeyboardController.current
-    var text by rememberSaveable { mutableStateOf("") }
-
+    var password by rememberSaveable { mutableStateOf("") }
+    var passwordHidden by rememberSaveable { mutableStateOf(true) }
     OutlinedTextField(
-        value = text,
-        onValueChange = { text = it },
-        shape = RoundedCornerShape(topEnd =12.dp, bottomStart =12.dp),
+        value = password,
+        onValueChange = { password = it },
         label = {
-            Text("Did not receive the verification OTP? Resend again",
+            Text("Enter Password",
                 color = MaterialTheme.colorScheme.onBackground,
                 style = MaterialTheme.typography.labelMedium,
             ) },
-        placeholder = { Text(text = "Resend OTP") },
+        visualTransformation =
+        if (passwordHidden) PasswordVisualTransformation() else VisualTransformation.None,
+        //  keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
         keyboardOptions = KeyboardOptions(
             imeAction = ImeAction.Done,
-            keyboardType = KeyboardType.Text
+            keyboardType = KeyboardType.Password
         ),
         colors = TextFieldDefaults.outlinedTextFieldColors(
             focusedBorderColor = MaterialTheme.colorScheme.onBackground,
             unfocusedBorderColor = MaterialTheme.colorScheme.onBackground),
-        singleLine = true,
+        trailingIcon = {
+            IconButton(onClick = { passwordHidden = !passwordHidden }) {
+                val visibilityIcon =
+                    if (passwordHidden) Visibility else VisibilityOff
+                // Please provide localized description for accessibility services
+                val description = if (passwordHidden) "Show password" else "Hide password"
+                Icon(imageVector = visibilityIcon, contentDescription = description)
+            }
+        },
         modifier = Modifier.fillMaxWidth(0.8f),
         keyboardActions = KeyboardActions(
             onDone = {
@@ -266,6 +262,45 @@ fun resendOTP() {
                 // do something here
             }
         )
+    )
+}
 
+@Composable
+fun Branding(
+    modifier: Modifier = Modifier,
+    image: Painter
+    ) {
+    Column(
+        modifier = modifier.wrapContentHeight(align = Alignment.CenterVertically)
+    ) {
+        Logo(
+            modifier = Modifier
+                .align(Alignment.CenterHorizontally)
+                .padding(vertical = 110.dp, horizontal = 76.dp),
+            image = image
+        )
+//        androidx.compose.material3.Text(
+//            text = stringResource(id = R.string.app_tagline),
+//            style = MaterialTheme.typography.titleMedium,
+//            textAlign = TextAlign.Center,
+//            modifier = Modifier
+//                .padding(top = 24.dp)
+//                .fillMaxWidth()
+//        )
+    }
+}
+
+@Composable
+private fun Logo(
+    modifier: Modifier,
+    image: Painter
+) {
+    Image(
+        painter = image,
+        contentDescription = null,
+        contentScale = ContentScale.Fit,
+        modifier = Modifier
+            .height(180.dp)
+            .fillMaxWidth(),
     )
 }

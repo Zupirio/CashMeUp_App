@@ -16,6 +16,11 @@
         android:theme="@style/Material3ComposeTheme"
         tools:targetApi="31">
         <activity
+            android:name=".DateQuestion"
+            android:exported="false"
+            android:label="@string/title_activity_date_question"
+            android:theme="@style/Material3ComposeTheme" />
+        <activity
             android:name=".BottomNav"
             android:exported="false"
             android:label="@string/title_activity_bottom_nav"

@@ -1,4 +1,4 @@
-package compose.material.theme
+package compose.material.theme.home
 
 
 import androidx.compose.foundation.layout.fillMaxSize
@@ -16,6 +16,8 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -26,6 +28,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import compose.material.theme.util.NewBar
+import compose.material.theme.R
+import compose.material.theme.util.HomeTopAppBar
 
 @Preview
 @Composable
@@ -33,6 +38,7 @@ fun Preview() {
     DashboardScreen(rememberNavController())
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DashboardScreen(navController: NavController) {
 
@@ -46,7 +52,10 @@ fun DashboardScreen(navController: NavController) {
             item {
 //                TopAppBar()
 
-                NewBar(text = "CashMeUp")
+                NewBar(text = "eCashMeUp")
+//                HomeTopAppBar(
+//                    topAppBarState = rememberTopAppBarState()
+//                )
 //                WelcomeBox()
 //                CarouselCard()
                 CarouselSection()
@@ -210,7 +219,19 @@ fun CarouselSection(
             )
             Spacer(modifier = Modifier.width(15.dp))
             ImagesCard(
-                image = painterResource(id = R.drawable.im_posmachinebanner)
+                image = painterResource(id = R.drawable.im_debicheckvp1)
+            )
+            Spacer(modifier = Modifier.width(15.dp))
+            ImagesCard(
+                image = painterResource(id = R.drawable.im_goalbanner)
+            )
+            Spacer(modifier = Modifier.width(15.dp))
+            ImagesCard(
+                image = painterResource(id = R.drawable.im_insuranceonboarding)
+            )
+            Spacer(modifier = Modifier.width(15.dp))
+            ImagesCard(
+                image = painterResource(id = R.drawable.im_loanbanner2)
             )
         }
 

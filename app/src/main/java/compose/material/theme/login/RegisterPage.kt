@@ -1,4 +1,4 @@
-package compose.material.theme
+package compose.material.theme.login
 
 
 import androidx.compose.foundation.Image
@@ -20,7 +20,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -31,11 +30,22 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+import compose.material.theme.R
+import compose.material.theme.Visibility
+import compose.material.theme.VisibilityOff
+import compose.material.theme.util.NiaOutlinedButton
 
+@Preview
+@Composable
+fun Preview5() {
+    RegisterPage(rememberNavController())
+}
 @Composable
 fun RegisterPage(navController: NavController) {
     Box(
@@ -50,11 +60,7 @@ fun RegisterPage(navController: NavController) {
 
         Box(
             modifier = Modifier
-                /*.background(
-                    color = MaterialTheme.colorScheme.onPrimary,
-                    shape = RoundedCornerShape(25.dp, 5.dp, 25.dp, 5.dp)
-                )*/
-                .align(Alignment.BottomCenter),
+                .padding(top = 100.dp)
         ) {
 
             Image(
@@ -121,8 +127,14 @@ fun RegisterPage(navController: NavController) {
                     gradientColors = gradientColor,
                     cornerRadius = cornerRadius,
                     nameButton = "Confirm",
-                    roundedCornerShape = RoundedCornerShape(topStart = 30.dp,bottomEnd = 30.dp)
                 )
+
+                Spacer(modifier = Modifier.padding(5.dp))
+
+                NiaOutlinedButton(onClick = {}) {
+                    androidx.compose.material3.Text(text = "Cancel")
+                }
+
                 Spacer(modifier = Modifier.padding(100.dp))
 
             }
@@ -142,13 +154,11 @@ private fun GradientButton(
     gradientColors: List<Color>,
     cornerRadius: Dp,
     nameButton: String,
-    roundedCornerShape: RoundedCornerShape
 ) {
 
     androidx.compose.material3.Button(
         modifier = Modifier
-            .fillMaxWidth()
-            .padding(start = 32.dp, end = 32.dp),
+            .fillMaxWidth().absolutePadding(10.dp, 0.dp, 10.dp, 0.dp),
         onClick = {
             //your code
         },
@@ -165,9 +175,9 @@ private fun GradientButton(
                 .fillMaxWidth()
                 .background(
                     brush = Brush.horizontalGradient(colors = gradientColors),
-                    shape = roundedCornerShape
+//                    shape = roundedCornerShape
                 )
-                .clip(roundedCornerShape)
+//                .clip(roundedCornerShape)
                 /*.background(
                     brush = Brush.linearGradient(colors = gradientColors),
                     shape = RoundedCornerShape(cornerRadius)
@@ -305,7 +315,6 @@ fun RegisterPassword() {
     OutlinedTextField(
         value = password,
         onValueChange = { password = it },
-        shape = RoundedCornerShape(topEnd =12.dp, bottomStart =12.dp),
         label = {
             Text("New Password",
                 color = MaterialTheme.colorScheme.onBackground,
@@ -350,7 +359,6 @@ fun RegisterPasswordConfirm() {
     OutlinedTextField(
         value = password,
         onValueChange = { password = it },
-        shape = RoundedCornerShape(topEnd =12.dp, bottomStart =12.dp),
         label = {
             Text("Confirm Password",
                 color = MaterialTheme.colorScheme.onBackground,
