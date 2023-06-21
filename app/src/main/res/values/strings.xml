@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">eCashMeUp</string>
+    <string name="title_activity_navigation">Navigation</string>
+
     <string name="title_activity_verify_otp">VerifyOTP</string>
     <string name="title_activity_home_page">HomePage</string>
     <string name="title_activity_search_bar">SearchBar</string>
@@ -16,6 +18,7 @@
 
     <!--    From Jet Survey-->
     <string name="email">Email</string>
+    <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="confirm_password">Confirm password</string>
     <string name="sign_in">Sign in</string>
@@ -34,6 +37,7 @@
     <string name="done">Done</string>
     <string name="back">Back</string>
     <string name="close">Close</string>
+    <string name="submit">Submit</string>
     <string name="show_password">Show password</string>
     <string name="hide_password">Hide password</string>
 
@@ -89,4 +93,11 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="app_tagline">eCashMeUp</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="id_passport">ID/Passport</string>
+    <string name="verify">Verify</string>
+    <string name="enter_otp">Enter OTP</string>
+    <string name="verify_otp">Verification</string>
+    <string name="verify_otp_text">We will send you a One Time Password on your phone number</string>
+    <string name="sms_otp_text">You will receive an OTP via SMS</string>
 </resources>
