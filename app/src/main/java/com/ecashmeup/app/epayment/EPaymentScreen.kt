@@ -78,7 +78,7 @@ fun EPaymentScreen(
     Scaffold(
         topBar = {
             SignInSignUpTopAppBar(
-                topAppBarText = stringResource(id = R.string.app_name),
+                topAppBarText = stringResource(id = R.string.title_activity_cash_payment),
                 onNavUp = onNavUp,
             )
         },

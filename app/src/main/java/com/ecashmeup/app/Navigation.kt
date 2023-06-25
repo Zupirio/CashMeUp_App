@@ -15,7 +15,7 @@ import com.ecashmeup.app.Destinations.SIGN_IN_ROUTE
 import com.ecashmeup.app.Destinations.SIGN_UP_ROUTE
 import com.ecashmeup.app.Destinations.SPLASH_ROUTE
 import com.ecashmeup.app.Destinations.SURVEY_RESULTS_ROUTE
-import com.ecashmeup.app.Destinations.SURVEY_ROUTE
+//import com.ecashmeup.app.Destinations.SURVEY_ROUTE
 import com.ecashmeup.app.epayment.EPaymentRoute
 import com.ecashmeup.app.home.CashPayment
 import com.ecashmeup.app.home.DashboardRoute
@@ -25,7 +25,7 @@ import com.ecashmeup.app.signinsignup.otpverify.OTPVerifyRoute
 import com.ecashmeup.app.signinsignup.resetpassword.ResetPasswordRoute
 import compose.material.theme.signinsignup.SignUpRoute
 import com.ecashmeup.app.survey.SurveyResultScreen
-import com.ecashmeup.app.survey.SurveyRoute
+//import com.ecashmeup.app.survey.SurveyRoute
 
 
 object Destinations {
@@ -38,7 +38,7 @@ object Destinations {
     const val DASHBOARD_ROUTE = "dashboard_page"
     const val CASHPAYMENT_ROUTE = "cashpayment_page"
     const val EPAYMENT_ROUTE = "epayment_page"
-    const val SURVEY_ROUTE = "survey"
+//    const val SURVEY_ROUTE = "survey"
     const val SURVEY_RESULTS_ROUTE = "surveyresults"
 }
 @Composable
@@ -126,14 +126,14 @@ fun CashMeUpNavHost(
         }
 
 
-        composable(SURVEY_ROUTE) {
-            SurveyRoute(
-                onSurveyComplete = {
-                    navController.navigate(SURVEY_RESULTS_ROUTE)
-                },
-                onNavUp = navController::navigateUp,
-            )
-        }
+//        composable(SURVEY_ROUTE) {
+//            SurveyRoute(
+//                onSurveyComplete = {
+//                    navController.navigate(SURVEY_RESULTS_ROUTE)
+//                },
+//                onNavUp = navController::navigateUp,
+//            )
+//        }
 
         composable(SURVEY_RESULTS_ROUTE) {
             SurveyResultScreen {

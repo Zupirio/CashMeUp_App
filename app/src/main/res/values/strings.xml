@@ -11,7 +11,7 @@
     <string name="title_activity_splash_screen">SplashScreen</string>
     <string name="title_activity_icons">Icons</string>
     <string name="title_activity_icon_grid">IconGrid</string>
-    <string name="title_activity_cash_payment">CashPayment</string>
+    <string name="title_activity_cash_payment">Cash Payment</string>
     <string name="title_activity_bottom_nav">BottomNav</string>
     <string name="title_activity_date_question">DateQuestion</string>
 
@@ -41,7 +41,7 @@
     <string name="show_password">Show password</string>
     <string name="hide_password">Hide password</string>
 
-    <!-- survey-->
+    <!-- Cashpayment Screen-->
     <string name="question_count">\u00A0of %d</string>
     <string name="select_one">Select one.</string>
     <string name="select_all">Select all that apply.</string>

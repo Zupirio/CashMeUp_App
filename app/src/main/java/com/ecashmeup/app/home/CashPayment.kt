@@ -31,7 +31,7 @@ fun CashPayment() {
 //                .padding(20.dp),
         ) {
             item {
-                TopAppBar(text = "eCashMeUp",  rememberNavController())
+                TopAppBar(text = "Cashpayment",  rememberNavController())
 
                 Spacer(modifier = Modifier.padding(50.dp))
 

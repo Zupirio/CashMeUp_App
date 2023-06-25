@@ -11,8 +11,8 @@ android {
         applicationId "com.ecashmeup.app"
         minSdk 27
         targetSdk 33
-        versionCode 1
-        versionName "1.0"
+        versionCode 2 // remember to update on each Google playstore update
+        versionName "1.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
