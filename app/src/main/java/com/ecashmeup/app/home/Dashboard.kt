@@ -173,7 +173,7 @@ fun DevicesGridView(onClick: () -> Unit) {
                 onClick = {
                     Toast.makeText(
                         context,
-                        "This feature is not yet implemented in this configuration",
+                        "Coming Soon",
                         Toast.LENGTH_LONG
                     ).show()
                 },
@@ -188,7 +188,7 @@ fun DevicesGridView(onClick: () -> Unit) {
                 onClick = {
                     Toast.makeText(
                         context,
-                        "This feature is not yet implemented in this configuration",
+                        "Coming Soon",
                         Toast.LENGTH_LONG
                     ).show()
                 },
@@ -199,7 +199,7 @@ fun DevicesGridView(onClick: () -> Unit) {
                 onClick = {
                     Toast.makeText(
                         context,
-                        "This feature is not yet implemented in this configuration",
+                        "Coming Soon",
                         Toast.LENGTH_LONG
                     ).show()
                 },

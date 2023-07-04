@@ -25,6 +25,7 @@
     <string name="sign_in_guest">Sign in as guest</string>
     <string name="sign_in_create_account">Sign in to your account</string>
     <string name="or">or</string>
+    <string name="blank"> </string>
     <string name="forgot_password">Forgot password?</string>
     <string name="user_continue">Continue</string>
     <string name="create_account">Create account</string>
@@ -100,4 +101,6 @@
     <string name="verify_otp">Verification</string>
     <string name="verify_otp_text">We will send you a One Time Password on your phone number</string>
     <string name="sms_otp_text">You will receive an OTP via SMS</string>
+    <string name="account_verification">Customer Account Verification</string>
+    <string name="access_account_verification_code">Access Verification Code</string>
 </resources>
