@@ -135,11 +135,6 @@ fun ResetContent(
         val confirmationPasswordFocusRequest = remember { FocusRequester() }
 
         val focusRequester = remember { FocusRequester() }
-//        val emailState by rememberSaveable(stateSaver = EmailStateSaver) {
-////            mutableStateOf(EmailState(email))
-//        }
-//
-//        Email(emailState, onImeAction = { focusRequester.requestFocus() })
 
         Spacer(modifier = Modifier.height(16.dp))
         val passwordState = remember { PasswordState() }
@@ -152,11 +147,6 @@ fun ResetContent(
         )
 
         Spacer(modifier = Modifier.height(16.dp))
-//        Text(
-//            text = stringResource(id = R.string.terms_and_conditions),
-//            style = MaterialTheme.typography.bodySmall,
-//            color = MaterialTheme.colorScheme.onSurface.copy(alpha = stronglyDeemphasizedAlpha)
-//        )
 
         Spacer(modifier = Modifier.height(16.dp))
         Button(

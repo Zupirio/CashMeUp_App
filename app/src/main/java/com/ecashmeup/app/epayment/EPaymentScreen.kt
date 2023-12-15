@@ -334,47 +334,6 @@ fun ErrorSnackbar(
     )
 }
 
-//@Composable
-//fun Branding(modifier: Modifier = Modifier) {
-//    Column(
-//        modifier = modifier.wrapContentHeight(align = Alignment.CenterVertically)
-//            .padding(top = 100.dp)
-//    ) {
-//        Text(
-//            text = stringResource(id = R.string.sms_otp_text),
-//            style = MaterialTheme.typography.titleMedium,
-//            textAlign = TextAlign.Center,
-//            modifier = Modifier
-//                .padding(top = 24.dp)
-//                .fillMaxWidth()
-//        )
-//    }
-//}
-
-//@ExperimentalMaterial3Api
-//@Composable
-//fun DatePicker(
-//    state: DatePickerState,
-//    modifier: Modifier = Modifier,
-//    dateFormatter: DatePickerFormatter = remember { DatePickerFormatter() },
-//    dateValidator: (Long) -> Boolean = { true },
-//    title: (@Composable () -> Unit)? = {
-//        DatePickerDefaults.DatePickerTitle(
-//            state,
-////            modifier = Modifier.padding(DatePickerTitlePadding)
-//        )
-//    },
-//    headline: (@Composable () -> Unit)? = {
-//        DatePickerDefaults.DatePickerHeadline(
-//            state,
-//            dateFormatter,
-////            modifier = Modifier.padding(DatePickerHeadlinePadding)
-//        )
-//    },
-//    showModeToggle: Boolean = true,
-//    colors: DatePickerColors = DatePickerDefaults.colors()
-//) {}
-
 @Preview(name = "Sign in light theme", uiMode = UI_MODE_NIGHT_NO)
 //@Preview(name = "Sign in dark theme", uiMode = UI_MODE_NIGHT_YES)
 @Composable

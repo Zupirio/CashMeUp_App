@@ -91,19 +91,6 @@ fun SignInScreen(
                         rememberNavController()
                     )
                     Spacer(modifier = Modifier.height(8.dp))
-
-//                    TextButton(
-//                        onClick = {
-//                            navController.navigate(RESET_PASSWORD_ROUTE)
-//                        },
-//                        modifier = Modifier.fillMaxWidth()
-//                    ) {
-//                        Text(
-//                            text = stringResource(id = R.string.forgot_password),
-//                            color = Color.Black,
-//                        )
-//                    }
-
                 }
             }
         }
@@ -194,7 +181,6 @@ fun SignInContent(
             )
         }
     }
-
 }
 
 @Composable
