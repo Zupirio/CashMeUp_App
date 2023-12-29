@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.ecashmeup.app.Destinations.DASHBOARD_ROUTE
+import com.ecashmeup.app.Destinations.DEBICHECK_ROUTE
 import com.ecashmeup.app.Destinations.EPAYMENT_ROUTE
 import com.ecashmeup.app.Destinations.OTP_SEND_ROUTE
 import com.ecashmeup.app.Destinations.OTP_VERIFY_ROUTE
@@ -14,6 +15,7 @@ import com.ecashmeup.app.Destinations.SIGN_IN_ROUTE
 import com.ecashmeup.app.Destinations.SIGN_UP_ROUTE
 import com.ecashmeup.app.Destinations.SPLASH_ROUTE
 import com.ecashmeup.app.Destinations.SURVEY_RESULTS_ROUTE
+import com.ecashmeup.app.debicheck.DebiCheckRoute
 import com.ecashmeup.app.epayment.EPaymentRoute
 import com.ecashmeup.app.home.DashboardRoute
 import com.ecashmeup.app.signinsignup.SignInRoute
@@ -34,6 +36,7 @@ object Destinations {
     const val DASHBOARD_ROUTE = "dashboard_page"
     const val EPAYMENT_ROUTE = "epayment_page"
     const val SURVEY_RESULTS_ROUTE = "surveyresults"
+    const val DEBICHECK_ROUTE = "debicheck_page"
 }
 @Composable
 fun CashMeUpNavHost(
@@ -94,6 +97,12 @@ fun CashMeUpNavHost(
 
         composable(EPAYMENT_ROUTE) {
             EPaymentRoute(
+                onNavUp = navController::navigateUp,
+            )
+        }
+
+        composable(DEBICHECK_ROUTE) {
+            DebiCheckRoute(
                 onNavUp = navController::navigateUp,
             )
         }

@@ -12,6 +12,7 @@
     <string name="title_activity_icons">Icons</string>
     <string name="title_activity_icon_grid">IconGrid</string>
     <string name="title_activity_cash_payment">Cash Payment</string>
+    <string name="title_activity_debicheck_mandate">Register DebiCheck Mandate</string>
     <string name="title_activity_bottom_nav">BottomNav</string>
     <string name="title_activity_date_question">DateQuestion</string>
 

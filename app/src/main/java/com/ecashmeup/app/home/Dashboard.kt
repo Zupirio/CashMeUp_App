@@ -148,13 +148,7 @@ fun DevicesGridView(onClick: () -> Unit) {
                 text = "Cash Payment"
             )
             IconSection(
-                onClick = {
-                    Toast.makeText(
-                        context,
-                        "Coming Soon",
-                        Toast.LENGTH_LONG
-                    ).show()
-                },
+                onClick = {navController.navigate("navigate")},
                 image = painterResource(id = R.drawable.ic_debicheck),
                 text = "DebiCheck"
             )
