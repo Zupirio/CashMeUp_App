@@ -13,23 +13,27 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowDropDown
+import androidx.compose.material.icons.outlined.Edit
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Snackbar
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.material3.TextFieldDefaults.outlinedTextFieldColors
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -112,8 +116,17 @@ fun EPaymentContent(
     dateFormat.timeZone = TimeZone.getTimeZone(("Africa/Johannesburg"))
     val dateString = dateFormat.format(getDefaultDateInMillis())
     var isValid by remember { mutableStateOf(false) }
+//    var frequency by rememberSaveable { mutableStateOf(frequency.Weekly.name) }
+    var expanded by remember { mutableStateOf(false) }
+    val scrollState = rememberScrollState()
 
-    Column(modifier = Modifier.fillMaxWidth()) {
+
+
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .verticalScroll(rememberScrollState())
+    ) {
 
         Spacer(modifier = Modifier.height(16.dp))
 
@@ -133,11 +146,27 @@ fun EPaymentContent(
 
         Spacer(modifier = Modifier.height(10.dp))
 
-        NumberField("Installment Occurence")
+        NumberField("Installment Occurrence")
 
         Spacer(modifier = Modifier.height(10.dp))
 
-        NumberField("Frequency")
+        DropdownMenu(
+            expanded = expanded,
+            onDismissRequest = { expanded = false },
+        ) {
+
+            DropdownMenuItem(
+                text = { Text("Item") },
+                onClick = { /* TODO */ },
+                leadingIcon = {
+                    Icon(
+                        Icons.Outlined.Edit,
+                        contentDescription = null
+                    )
+                })
+        }
+
+
 
         Spacer(modifier = Modifier.height(10.dp))
 
@@ -262,7 +291,7 @@ fun EPaymentContent(
     }
 }
 
-@OptIn(ExperimentalComposeUiApi::class)
+@OptIn(ExperimentalComposeUiApi::class, ExperimentalMaterial3Api::class)
 @Composable
 fun InputFields(
     labelText: String,
@@ -280,7 +309,7 @@ fun InputFields(
                         },
         modifier = Modifier
             .fillMaxWidth(),
-        colors = OutlinedTextFieldDefaults.colors(
+        colors = outlinedTextFieldColors(
             cursorColor = Color.LightGray,
             focusedBorderColor = md_theme_light_secondary,
             unfocusedBorderColor = Color.LightGray,
@@ -322,7 +351,7 @@ fun NumberField(
                         },
         modifier = Modifier
             .fillMaxWidth(),
-        colors = OutlinedTextFieldDefaults.colors(
+        colors = outlinedTextFieldColors(
             cursorColor = Color.LightGray,
             focusedBorderColor = md_theme_light_secondary,
             unfocusedBorderColor = Color.LightGray,
