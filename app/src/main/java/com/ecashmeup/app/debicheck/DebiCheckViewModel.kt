@@ -19,7 +19,6 @@ package com.ecashmeup.app.debicheck
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.ecashmeup.app.signinsignup.UserRepository
-import com.ecashmeup.app.signinsignup.otpverify.ResetPasswordViewModel
 
 class DebiCheckViewModel(private val userRepository: UserRepository) : ViewModel() {
 

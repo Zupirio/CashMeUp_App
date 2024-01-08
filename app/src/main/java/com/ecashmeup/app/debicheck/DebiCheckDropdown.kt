@@ -8,8 +8,8 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -39,7 +39,7 @@ fun Dropdown(enumClassName: String, getOptions: () -> List<String>, recurrence: 
             expanded = expanded,
             onExpandedChange = { expanded = !expanded },
         ) {
-            TextField(
+            OutlinedTextField(
                 modifier = Modifier
                     .menuAnchor()
                     .fillMaxWidth(),

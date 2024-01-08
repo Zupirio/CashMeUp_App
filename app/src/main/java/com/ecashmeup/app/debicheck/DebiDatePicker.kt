@@ -25,10 +25,8 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.ecashmeup.app.R
 import java.text.DateFormatSymbols
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -51,15 +49,18 @@ fun DatePicker() {
 
         Spacer(modifier = Modifier.padding(4.dp))
 
-        EndDateTextField { endDate = it }
+        DateTextField(
+            dateNameString = "Hello",
+            endDate = { endDate = it }
+        )
     }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun EndDateTextField(endDate: (Long) -> Unit) {
+fun DateTextField(dateNameString: String, endDate: (Long) -> Unit) {
     Text(
-        text = stringResource(id = R.string.submit),
+        text = dateNameString,
         style = MaterialTheme.typography.bodyLarge
     )
 

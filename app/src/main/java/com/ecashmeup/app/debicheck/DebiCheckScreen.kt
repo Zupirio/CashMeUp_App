@@ -42,6 +42,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.ecashmeup.app.R
+import com.ecashmeup.app.ui.theme.md_theme_light_outline
 import com.ecashmeup.app.ui.theme.md_theme_light_secondary
 import com.ecashmeup.app.util.supportWideScreen
 import compose.material.theme.signinsignup.SignInSignUpTopAppBar
@@ -111,7 +112,7 @@ fun InputFields(
         colors = outlinedTextFieldColors(
             cursorColor = Color.LightGray,
             focusedBorderColor = md_theme_light_secondary,
-            unfocusedBorderColor = Color.LightGray,
+            unfocusedBorderColor = md_theme_light_outline,
         ),
         textStyle = MaterialTheme.typography.bodyMedium,
         label = {
@@ -145,9 +146,10 @@ fun NumberField(
 
     OutlinedTextField(
         value = text,
-        onValueChange = {text = it
-                        isValid = it.isNotBlank()
-                        },
+        onValueChange = {
+            text = it
+            isValid = it.isNotBlank()
+        },
         modifier = Modifier
             .fillMaxWidth(),
         colors = outlinedTextFieldColors(
@@ -155,6 +157,8 @@ fun NumberField(
             focusedBorderColor = md_theme_light_secondary,
             unfocusedBorderColor = Color.LightGray,
         ),
+        // TODO: Add R prefix
+        // prefix = { Text("R") }, {}
         textStyle = MaterialTheme.typography.bodyMedium,
         label = {
             Text(

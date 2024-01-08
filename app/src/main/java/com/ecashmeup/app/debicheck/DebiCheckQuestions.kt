@@ -2,17 +2,14 @@ package com.ecashmeup.app.debicheck
 
 import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import android.widget.Toast
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -28,9 +25,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.ecashmeup.app.R
 import com.ecashmeup.app.survey.simpleDateFormatPattern
-import com.ecashmeup.app.ui.theme.slightlyDeemphasizedAlpha
 import com.ecashmeup.app.util.getDefaultDateInMillis
 import java.text.SimpleDateFormat
+import java.util.Date
 import java.util.Locale
 import java.util.TimeZone
 
@@ -59,7 +56,7 @@ fun DebiCheckQuestions(
     var collectionDay by rememberSaveable { mutableStateOf(CollectionDay.Monday.name) }
     var dateAdjustmentRuleIndicator by rememberSaveable { mutableStateOf(DateAdjustmentRuleIndicator.Yes.name) }
     var adjustmentCategory by rememberSaveable { mutableStateOf(AdjustmentCategory.Never.description) }
-
+    var endDate by rememberSaveable { mutableStateOf(Date().time) }
 
     Column(
         modifier = Modifier
@@ -93,7 +90,7 @@ fun DebiCheckQuestions(
         Spacer(modifier = Modifier.height(10.dp))
 
         Dropdown(
-            enumClassName = installmentOccurrence,
+            enumClassName = "Instalment Occurrence",
             getOptions = { getInstallmentOccurrence().map { it.description } },
             recurrence = { installmentOccurrence = it }
         )
@@ -108,11 +105,17 @@ fun DebiCheckQuestions(
 
         Spacer(modifier = Modifier.height(10.dp))
 
-        NumberField("Mandate Initiation Date")
+        DateTextField(
+            dateNameString = "Mandate Initiation Date",
+            endDate = { endDate = it }
+        )
 
         Spacer(modifier = Modifier.height(10.dp))
 
-        NumberField("First Collection Date")
+        DateTextField(
+            dateNameString = "First Collection Date",
+            endDate = { endDate = it }
+        )
 
         Spacer(modifier = Modifier.height(10.dp))
 
@@ -132,7 +135,7 @@ fun DebiCheckQuestions(
 
         Spacer(modifier = Modifier.height(10.dp))
 
-        NumberField("Debtor Account Name")
+        InputFields("Debtor Account Name")
 
         Spacer(modifier = Modifier.height(10.dp))
 
@@ -144,11 +147,11 @@ fun DebiCheckQuestions(
 
         Spacer(modifier = Modifier.height(10.dp))
 
-        NumberField("Debtor Identification")
+        InputFields("Debtor Identification")
 
         Spacer(modifier = Modifier.height(10.dp))
 
-        NumberField("Debtor Account Number")
+        InputFields("Debtor Account Number")
 
         Spacer(modifier = Modifier.height(10.dp))
 
@@ -172,7 +175,7 @@ fun DebiCheckQuestions(
 
         Spacer(modifier = Modifier.height(10.dp))
 
-        NumberField("Debtor Email Contact")
+        InputFields("Debtor Email Contact")
 
         Spacer(modifier = Modifier.height(10.dp))
 
@@ -203,35 +206,6 @@ fun DebiCheckQuestions(
         NumberField("First Collection Amount")
 
         Spacer(modifier = Modifier.height(10.dp))
-
-        Button(
-            enabled = false,
-            onClick = onClick,
-            colors = ButtonDefaults.buttonColors(
-                containerColor = MaterialTheme.colorScheme.surface,
-                contentColor = MaterialTheme.colorScheme.onSurface
-                    .copy(alpha = slightlyDeemphasizedAlpha),
-            ),
-            shape = MaterialTheme.shapes.small,
-            modifier = Modifier
-                .padding(vertical = 20.dp)
-                .height(54.dp),
-            border = BorderStroke(1.dp, MaterialTheme.colorScheme.onSurface.copy(alpha = 0.12f)),
-        ) {
-            Text(
-                text = dateString,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .weight(1.8f)
-            )
-//            Icon(
-//                imageVector = Icons.Filled.ArrowDropDown,
-//                contentDescription = null,
-//                modifier = Modifier
-//                    .fillMaxWidth()
-//                    .weight(0.2f)
-//            )
-        }
 
         Spacer(modifier = Modifier.height(10.dp))
 
