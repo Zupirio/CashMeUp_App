@@ -154,7 +154,7 @@ fun DevicesGridView(onClick: () -> Unit) {
                 text = "Cash Payment"
             )
             IconSection(
-                onClick = {navController.navigate("navigate")},
+                onClick = onClick,
                 image = painterResource(id = R.drawable.ic_debicheck),
                 text = "DebiCheck"
             )

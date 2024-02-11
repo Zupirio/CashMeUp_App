@@ -126,6 +126,7 @@ fun EPaymentContent(
         Spacer(modifier = Modifier.height(10.dp))
 
         InputFields("Sales Agent")
+        println(InputFields("Sales Agent"))
 
         Spacer(modifier = Modifier.height(10.dp))
 
